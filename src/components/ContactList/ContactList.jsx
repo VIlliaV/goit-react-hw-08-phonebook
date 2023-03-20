@@ -2,30 +2,27 @@ import PropTypes from 'prop-types';
 
 import { ContactItem } from '../ContactItem/ContactItem';
 
-export const ContactList = ({ contacts, filter, deleteContact }) => {
-  const filterContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
-
+export const ContactList = ({ filteredContacts, deleteContact }) => {
   return (
     <ul>
-      {filterContacts.length !== 0 ? (
-        <ContactItem contacts={filterContacts} deleteContact={deleteContact} />
-      ) : (
-        <p>Please add contact</p>
-      )}
+      {filteredContacts.map(({ id, name, number }) => (
+        <ContactItem
+          key={id}
+          contact={{ id, name, number }}
+          deleteContact={deleteContact}
+        />
+      ))}
     </ul>
   );
 };
 
 ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
+  filteredContacts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  filter: PropTypes.string.isRequired,
   deleteContact: PropTypes.func.isRequired,
 };
