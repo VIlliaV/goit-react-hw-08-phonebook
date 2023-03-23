@@ -14,24 +14,20 @@ export class App extends Component {
     ],
     filter: '',
   };
- 
+
   componentDidMount() {
     if (localStorage.getItem('contacts')) {
-    
       this.setState({
-      contacts: JSON.parse(localStorage.getItem('contacts')),
-    })
-  }
-  }
-  
-  componentDidUpdate(_, prevState) {
-
-    if (prevState.length === this.state.length) {
-     
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+        contacts: JSON.parse(localStorage.getItem('contacts')),
+      });
     }
   }
- 
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.length === this.state.length) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
 
   changeHandler = ({ target: { value, name } }) => {
     this.setState({ [name]: value });
