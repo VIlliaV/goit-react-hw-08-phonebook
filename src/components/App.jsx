@@ -13,6 +13,7 @@ export class App extends Component {
       // { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
+    isAddContact: false,
   };
 
   componentDidMount() {
@@ -24,8 +25,13 @@ export class App extends Component {
   }
 
   componentDidUpdate(_, prevState) {
-    if (prevState.length === this.state.length) {
+    if (prevState.contacts.length !== this.state.contacts.length) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+      if (this.state.isAddContact) {
+        setTimeout(() => {
+          this.setState({ isAddContact: false });
+        }, 1500);
+      }
     }
   }
 
@@ -34,6 +40,7 @@ export class App extends Component {
   };
 
   updateContacts = newUser => {
+    this.setState({ isAddContact: true });
     const { name } = newUser;
     const { contacts } = this.state;
     if (contacts.find(option => option.name === name)) {
@@ -61,12 +68,14 @@ export class App extends Component {
 
   render() {
     const filteredContacts = this.filterContacts();
+    const { isAddContact } = this.state;
     return (
       <Container>
         <h1>Phonebook</h1>
         <ContactForm updateContacts={this.updateContacts} />
         <h2>Contacts</h2>
         <Filter changeHandler={this.changeHandler} />
+        {isAddContact && <p>contact added</p>}
         {filteredContacts.length !== 0 ? (
           <ContactList
             filteredContacts={filteredContacts}
