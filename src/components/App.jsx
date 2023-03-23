@@ -27,11 +27,12 @@ export class App extends Component {
   componentDidUpdate(_, prevState) {
     if (prevState.contacts !== this.state.contacts) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-      if (this.state.isAddContact) {
-        setTimeout(() => {
-          this.setState({ isAddContact: false });
-        }, 1500);
-      }
+      console.log(prevState.contacts, this.state.contacts);
+    }
+    if (this.state.isAddContact) {
+      setTimeout(() => {
+        this.setState({ isAddContact: false });
+      }, 1500);
     }
   }
 
@@ -40,13 +41,12 @@ export class App extends Component {
   };
 
   updateContacts = newUser => {
-    this.setState({ isAddContact: true });
     const { name } = newUser;
     const { contacts } = this.state;
     if (contacts.find(option => option.name === name)) {
       return false;
     }
-
+    this.setState({ isAddContact: true });
     this.setState(prevState => {
       return { contacts: [...prevState.contacts, newUser] };
     });
