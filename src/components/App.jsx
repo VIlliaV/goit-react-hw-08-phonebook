@@ -29,11 +29,6 @@ export class App extends Component {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
       console.log(prevState.contacts, this.state.contacts);
     }
-    if (this.state.isAddContact) {
-      setTimeout(() => {
-        this.setState({ isAddContact: false });
-      }, 1500);
-    }
   }
 
   changeHandler = ({ target: { value, name } }) => {
@@ -47,6 +42,9 @@ export class App extends Component {
       return false;
     }
     this.setState({ isAddContact: true });
+    setTimeout(() => {
+      this.setState({ isAddContact: false });
+    }, 1500);
     this.setState(prevState => {
       return { contacts: [...prevState.contacts, newUser] };
     });
