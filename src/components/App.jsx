@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
 
 import { Container } from './App.styled';
@@ -9,6 +10,14 @@ export const App = () => {
   const [filter, setFilter] = useState('');
   const [isAddContact, setIsAddContact] = useState(false);
 
+  useEffect(() => {
+    const localContacts = localStorage.getItem('contacts');
+    if (localContacts) {
+      setContacts(JSON.parse(localContacts));
+    }
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
+  
   // componentDidMount() {
   //   if (localStorage.getItem('contacts')) {
   //     this.setState({
@@ -24,8 +33,8 @@ export const App = () => {
   //   }
   // }
 
-  const changeHandler = ({ target: { value, name } }) => {
-    this.setState({ [name]: value });
+  const changeHandler = ({ target: { value } }) => {
+    setFilter(value);
   };
 
   const updateContacts = newUser => {
@@ -52,7 +61,7 @@ export const App = () => {
     );
   };
 
-  const filteredContacts = filterContacts();
+  // const filteredContacts = filterContacts();
 
   return (
     <Container>
@@ -61,9 +70,9 @@ export const App = () => {
       <h2>Contacts</h2>
       <Filter changeHandler={changeHandler} />
       {isAddContact && <p>contact added</p>}
-      {filteredContacts.length !== 0 ? (
+      {filterContacts().length !== 0 ? (
         <ContactList
-          filteredContacts={filteredContacts}
+          filteredContacts={filterContacts()}
           deleteContact={deleteContact}
         />
       ) : (
