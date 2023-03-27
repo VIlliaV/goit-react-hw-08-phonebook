@@ -15,23 +15,18 @@ export const Container = styled.div`
     width: 150px;
     margin: 0 auto;
     padding: 5px;
-
-    animation-name: myAnimation;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: myAnimation 10s ease-in-out infinite;
 
     @keyframes myAnimation {
       0% {
-        font-size: 24px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        transform: scale(1);
       }
       50% {
-        font-size: 32px;
-        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+        transform: scale(1.2);
       }
       100% {
-        font-size: 24px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        transform: scale(1);
       }
     }
   }

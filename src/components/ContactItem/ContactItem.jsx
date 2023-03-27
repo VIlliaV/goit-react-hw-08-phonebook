@@ -1,35 +1,31 @@
-import { Component } from 'react';
+import { useRef } from 'react';
 
 import { Item } from './ContactItem.styled';
 
-export class ContactItem extends Component {
-  state = {
-    del: '',
-  };
-  deleteItem = id => {
-    this.setState({ del: id });
+export const ContactItem = ({ deleteContact, contact }) => {
+  const del = useRef();
+
+  const deleteItem = id => {
+    del.current.className += ' delete';
     setTimeout(() => {
-      this.props.deleteContact(id);
+      deleteContact(id);
     }, 300);
   };
 
-  render() {
-    const { id, name, number } = this.props.contact;
-    const delId = this.state.del;
+  const { id, name, number } = contact;
 
-    return (
-      <Item className={id === delId ? 'delete' : ''}>
-        <span></span>
-        <p className="name">{name}: </p>
-        <p> {number}</p>
-        <button
-          onClick={() => {
-            this.deleteItem(id);
-          }}
-        >
-          Delete
-        </button>
-      </Item>
-    );
-  }
-}
+  return (
+    <Item ref={del}>
+      <span></span>
+      <p className="name">{name}: </p>
+      <p> {number}</p>
+      <button
+        onClick={() => {
+          deleteItem(id);
+        }}
+      >
+        Delete
+      </button>
+    </Item>
+  );
+};
