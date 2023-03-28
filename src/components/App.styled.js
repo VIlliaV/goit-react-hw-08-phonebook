@@ -22,7 +22,7 @@ export const Container = styled.div`
       0% {
         transform: scale(1);
       }
-      50% {
+      51% {
         transform: scale(1.2);
       }
       100% {
