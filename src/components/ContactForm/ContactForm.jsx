@@ -1,13 +1,13 @@
-import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
 import { useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
-
-import { Form } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact, getContact } from 'redux/contactsSlice';
 
-export const ContactForm = ({ updateContacts }) => {
+import toast, { Toaster } from 'react-hot-toast';
+import { nanoid } from 'nanoid';
+
+import { Form } from './ContactForm.styled';
+
+export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -16,20 +16,19 @@ export const ContactForm = ({ updateContacts }) => {
 
   const addNewUser = e => {
     e.preventDefault();
-    // console.log('object :>> ', contacts);
-    // if (contacts.find(option => option.name === name)) {
-    //   toast.error(`${name} already in contact`);
-    // } else {
-    toast.success('contact is added');
-    const newUser = {
-      id: nanoid(),
-      name,
-      number,
-    };
-    dispatch(addContact(newUser));
-    setName('');
-    setNumber('');
-    // }
+    if (contacts.find(option => option.name === name)) {
+      toast.error(`${name} already in contact`);
+    } else {
+      toast.success('contact is added');
+      const newUser = {
+        id: nanoid(),
+        name,
+        number,
+      };
+      dispatch(addContact(newUser));
+      setName('');
+      setNumber('');
+    }
   };
 
   const changeHandler = ({ target: { value, name } }) => {
@@ -75,8 +74,4 @@ export const ContactForm = ({ updateContacts }) => {
       <button type="submit">Add User</button>
     </Form>
   );
-};
-
-ContactForm.propTypes = {
-  updateContacts: PropTypes.func.isRequired,
 };

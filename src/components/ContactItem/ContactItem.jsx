@@ -1,14 +1,20 @@
+import PropTypes from 'prop-types';
+
 import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/contactsSlice';
 
 import { Item } from './ContactItem.styled';
 
-export const ContactItem = ({ deleteContact, contact }) => {
+export const ContactItem = ({ contact }) => {
   const del = useRef();
+
+  const dispatch = useDispatch();
 
   const deleteItem = id => {
     del.current.className += ' delete';
     setTimeout(() => {
-      deleteContact(id);
+      dispatch(deleteContact(id));
     }, 300);
   };
 
@@ -28,4 +34,12 @@ export const ContactItem = ({ deleteContact, contact }) => {
       </button>
     </Item>
   );
+};
+
+ContactItem.propTypes = {
+  contact: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }).isRequired,
 };
