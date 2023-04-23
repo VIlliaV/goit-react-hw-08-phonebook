@@ -15,8 +15,8 @@ export const ContactList = () => {
     <>
       {filterContacts.length !== 0 ? (
         <ul>
-          {filterContacts.map(({ id, name, number }) => (
-            <ContactItem key={id} contact={{ id, name, number }} />
+          {filterContacts.map(({ id, name, phone }) => (
+            <ContactItem key={id} contact={{ id, name, phone }} />
           ))}
         </ul>
       ) : (

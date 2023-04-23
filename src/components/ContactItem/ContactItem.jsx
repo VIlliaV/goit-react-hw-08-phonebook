@@ -18,13 +18,13 @@ export const ContactItem = ({ contact }) => {
     }, 300);
   };
 
-  const { id, name, number } = contact;
+  const { id, name, phone } = contact;
 
   return (
     <Item ref={del}>
       <span></span>
       <p className="name">{name}: </p>
-      <p> {number}</p>
+      <p> {phone}</p>
       <button
         onClick={() => {
           deleteItem(id);
@@ -40,6 +40,6 @@ ContactItem.propTypes = {
   contact: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
   }).isRequired,
 };
