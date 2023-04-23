@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, getContact } from 'redux/contactsSlice';
-
 import toast, { Toaster } from 'react-hot-toast';
+
 import { nanoid } from 'nanoid';
+
+import { addContact } from 'redux/contacts/contactsOperations';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
 
 import { Form } from './ContactForm.styled';
 
@@ -12,7 +14,7 @@ export const ContactForm = () => {
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
-  const contacts = useSelector(getContact);
+  const contacts = useSelector(selectContacts);
 
   const addNewUser = e => {
     e.preventDefault();
