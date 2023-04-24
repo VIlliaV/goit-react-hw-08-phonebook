@@ -30,7 +30,7 @@ export const ContactItem = ({ contact }) => {
     minute: 'numeric',
     second: 'numeric',
     hour12: true,
-    timeZone: 'America/New_York',
+    timeZone: 'Europe/Kiev',
   };
   const formatter = new Intl.DateTimeFormat('en-US', options);
 

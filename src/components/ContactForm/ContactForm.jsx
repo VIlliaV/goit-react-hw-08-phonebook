@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import toast, { Toaster } from 'react-hot-toast';
 
-import { nanoid } from 'nanoid';
-
 import { addContact } from 'redux/contacts/contactsOperations';
 import { selectContacts } from 'redux/contacts/contactsSelectors';
 
@@ -23,7 +21,6 @@ export const ContactForm = () => {
     } else {
       toast.success('contact is added');
       const newUser = {
-        id: nanoid(),
         name,
         phone: number,
       };
