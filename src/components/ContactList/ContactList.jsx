@@ -3,21 +3,19 @@ import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  selectContacts,
   selectError,
+  selectFilterContacts,
   selectIsLoading,
 } from 'redux/contacts/contactsSelectors';
-import { selectFilter } from 'redux/filterSlice';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 
 import { Loader } from 'components/Loader/Loader';
 import { ContactItem } from '../ContactItem/ContactItem';
 
 export const ContactList = () => {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilter);
   const error = useSelector(selectError);
   const loading = useSelector(selectIsLoading);
+  const filterContacts = useSelector(selectFilterContacts);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,10 +28,6 @@ export const ContactList = () => {
       return;
     }
   }, [error]);
-
-  const filterContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
 
   return (
     <>
