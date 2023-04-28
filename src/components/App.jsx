@@ -1,22 +1,25 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { Container } from './App.styled';
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
+// import { Container } from './App.styled';
+
+import { Layout } from './Layout/Layout';
+import { Home } from 'pages/Home/Home';
+import { Register } from 'pages/Register/Register';
+import { Login } from 'pages/Login/Login';
+import { Phonebook } from 'pages/Phonebook/Phonebook';
 
 export const App = () => {
   return (
-    <Container>
+    <div>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="register" element={<Register />} />
-          <Route path="login " element={<Login />} />
+          <Route path="login" element={<Login />} />
           <Route path="contacts" element={<Phonebook />} />
         </Route>
       </Routes>
-    </Container>
+    </div>
   );
 };
 
