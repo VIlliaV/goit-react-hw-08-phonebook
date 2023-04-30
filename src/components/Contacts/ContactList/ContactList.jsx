@@ -10,7 +10,7 @@ import {
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 
 import { Loader } from 'components/Loader/Loader';
-import { ContactItem } from '../ContactItem/ContactItem';
+import { ContactItem } from '..';
 
 export const ContactList = () => {
   const error = useSelector(selectError);
@@ -33,8 +33,8 @@ export const ContactList = () => {
     <>
       {filterContacts.length !== 0 ? (
         <ul>
-          {filterContacts.map(({ id, name, phone, createdAt }) => (
-            <ContactItem key={id} contact={{ id, name, phone, createdAt }} />
+          {filterContacts.map(({ id, name, number }) => (
+            <ContactItem key={id} contact={{ id, name, number }} />
           ))}
         </ul>
       ) : (

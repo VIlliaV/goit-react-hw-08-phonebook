@@ -1,10 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { NavStyle } from 'components/AppBar/AppBar.styled';
 
 export const AuthNav = () => {
   return (
     <nav>
-      <NavLink to="register">register</NavLink>
-      <NavLink to="login">login</NavLink>
+      <NavStyle to="register">register</NavStyle>
+      <NavStyle to="login">login</NavStyle>
     </nav>
   );
 };

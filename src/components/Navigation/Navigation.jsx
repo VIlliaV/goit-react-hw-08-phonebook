@@ -1,10 +1,12 @@
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
+import { NavStyle } from 'components/AppBar/AppBar.styled';
+import { Nav } from './Navigation.styled';
 
 export const Navigation = () => {
   return (
-    <nav>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="contacts">Contacts</NavLink>
-    </nav>
+    <Nav>
+      <NavStyle to="/">Home</NavStyle>
+      <NavStyle to="contacts">Contacts</NavStyle>
+    </Nav>
   );
 };

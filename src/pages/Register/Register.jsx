@@ -1,8 +1,12 @@
 import { useForm } from 'react-hook-form';
 import { Button } from '@mui/material';
 import { InputEmail, InputName, InputPassword } from 'components/Form';
+import { useDispatch } from 'react-redux';
+import { signUp } from 'redux/auth/authOperations';
 
 const Register = () => {
+  const dispatch = useDispatch();
+  // register(data);
   const {
     register,
     handleSubmit,
@@ -10,7 +14,8 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = data => {
-    console.log(data);
+    // console.log(data);
+    dispatch(signUp(data));
   };
 
   // const register = 18888;

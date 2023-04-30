@@ -29,7 +29,7 @@ export const ContactForm = () => {
       toast.success('contact is added');
       const newUser = {
         name,
-        phone: number,
+        number,
       };
       dispatch(addContact(newUser));
     }
@@ -40,7 +40,7 @@ export const ContactForm = () => {
       <InputName props={{ register, errors }} />
       <InputNumber props={{ register, errors }} />
       <Button type="submit" variant="contained">
-        Login
+        add contact
       </Button>
     </Form>
   );
