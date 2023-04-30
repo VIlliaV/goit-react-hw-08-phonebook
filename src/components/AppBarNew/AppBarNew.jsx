@@ -18,7 +18,10 @@ import { AuthNav } from 'components/AuthNav/AuthNav';
 import phone from '../../images/phone.jpg';
 import { useNavigate } from 'react-router-dom';
 
-const settings = ['Profile', 'Logout'];
+const settings = [
+  { title: 'Profile', nav: 'contacts' },
+  { title: 'Logout', nav: '/' },
+];
 
 function ResponsiveAppBar() {
   const navigate = useNavigate();
@@ -34,9 +37,14 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const handleSettings = nav => {
+    handleCloseUserMenu();
+    navigate(nav);
+  };
+
   return (
     <AppBar
-      position="static"
+      position="fixed"
       sx={{
         backgroundImage: `url(${phone})`,
         backgroundSize: 'cover',
@@ -54,9 +62,8 @@ function ResponsiveAppBar() {
               onClick={() => navigate('/')}
               sx={{
                 mr: 2,
-
-                flexGrow: 0,
                 display: { xs: 'none', md: 'flex' },
+                flexGrow: 0,
                 fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
@@ -117,8 +124,11 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map(setting => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem
+                  key={setting.title}
+                  onClick={() => handleSettings(setting.nav)}
+                >
+                  <Typography textAlign="center">{setting.title}</Typography>
                 </MenuItem>
               ))}
             </Menu>
