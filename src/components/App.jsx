@@ -1,16 +1,22 @@
 import { Route, Routes } from 'react-router-dom';
-
+import { Toaster } from 'react-hot-toast';
 // import { Container } from './App.styled';
 
 import { Layout } from './Layout/Layout';
-import { Home } from 'pages/Home/Home';
-import { Register } from 'pages/Register/Register';
-import { Login } from 'pages/Login/Login';
+// import { Home } from 'pages/Home/Home';
+// import { Register } from 'pages/Register/Register';
+// import { Login } from 'pages/Login/Login';
 import { Phonebook } from 'pages/Phonebook/Phonebook';
+import { lazy } from 'react';
+
+const Home = lazy(() => import('pages/Home/Home'));
+const Register = lazy(() => import('pages/Register/Register'));
+const Login = lazy(() => import('pages/Login/Login'));
 
 export const App = () => {
   return (
     <div>
+      <Toaster />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
