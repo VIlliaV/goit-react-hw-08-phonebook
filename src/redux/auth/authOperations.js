@@ -16,9 +16,9 @@ export const login = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('users/login', user);
+      console.log('🚀 ~ data:', data);
 
       setAuthHeader(data.token);
-      console.log('🚀 ~ data:', data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -41,7 +41,7 @@ export const signUp = createAsyncThunk(
 
 export const logOut = createAsyncThunk(
   'user/logout',
-  async (user, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
       await axios.post('users/logout');
       clearAuthHeader();
@@ -57,13 +57,15 @@ export const refreshUser = createAsyncThunk(
     const {
       auth: { token },
     } = getState();
+    console.log('🚀 ~ token:', token);
     if (token === null) return rejectWithValue('the user is not logged in');
     try {
       setAuthHeader(token);
-      const { data } = await axios.post('users/current');
+      const { data } = await axios.get('users/current');
+      console.log('🚀 ~ data:', data);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(`Can't login ${error.message}`);
     }
   }
 );

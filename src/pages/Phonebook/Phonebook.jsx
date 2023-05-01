@@ -1,6 +1,6 @@
 import { ContactForm, ContactList, Filter } from 'components/Contacts';
 
-export const Phonebook = () => {
+const Phonebook = () => {
   return (
     <div>
       <h1>Phonebook</h1>
@@ -11,3 +11,5 @@ export const Phonebook = () => {
     </div>
   );
 };
+
+export default Phonebook;

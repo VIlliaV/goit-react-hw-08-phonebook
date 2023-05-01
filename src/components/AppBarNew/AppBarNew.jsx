@@ -17,14 +17,17 @@ import { Navigation } from 'components/Navigation/Navigation';
 import { AuthNav } from 'components/AuthNav/AuthNav';
 import phone from '../../images/phone.jpg';
 import { useNavigate } from 'react-router-dom';
+import { logOut } from 'redux/auth/authOperations';
+import { useDispatch } from 'react-redux';
 
 const settings = [
   { title: 'Profile', nav: 'contacts' },
   { title: 'Logout', nav: '/' },
 ];
 
-function ResponsiveAppBar() {
+const ResponsiveAppBar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [anchorElUser, setAnchorElUser] = useState(null);
   //   (React.useState < null) | (HTMLElement > null);
@@ -37,8 +40,9 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  const handleSettings = nav => {
+  const handleSettings = ({ nav, title }) => {
     handleCloseUserMenu();
+    if (title === 'Logout') dispatch(logOut());
     navigate(nav);
   };
 
@@ -126,7 +130,7 @@ function ResponsiveAppBar() {
               {settings.map(setting => (
                 <MenuItem
                   key={setting.title}
-                  onClick={() => handleSettings(setting.nav)}
+                  onClick={() => handleSettings(setting)}
                 >
                   <Typography textAlign="center">{setting.title}</Typography>
                 </MenuItem>
@@ -137,5 +141,5 @@ function ResponsiveAppBar() {
       </Container>
     </AppBar>
   );
-}
+};
 export default ResponsiveAppBar;

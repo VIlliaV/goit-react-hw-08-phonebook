@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { login, signUp } from './authOperations';
+import { login, signUp, logOut, refreshUser } from './authOperations';
 
 // const defaultStatus = {
 //   pending: 'pending',
@@ -14,6 +14,8 @@ const authInitialState = {
   },
   token: null,
   isLoggedIn: false,
+  isRefreshing: false,
+  loginError: false,
 };
 
 const authSlice = createSlice({
@@ -21,12 +23,43 @@ const authSlice = createSlice({
   initialState: authInitialState,
   extraReducers: builder => {
     builder
+
       .addCase(login.fulfilled, (state, { payload }) => {
-        console.log('🚀 ~ payload:', payload);
-        return (state = payload);
+        state.user.name = payload.user.name;
+        state.user.email = payload.user.email;
+        state.token = payload.token;
+        state.isLoggedIn = true;
+      })
+      .addCase(login.rejected, state => {
+        state.loginError = true;
       })
       .addCase(signUp.fulfilled, (state, { payload }) => {
-        return (state = payload);
+        state.user.name = payload.user.name;
+        state.user.email = payload.user.email;
+        state.token = payload.token;
+        state.isLoggedIn = true;
+      })
+      .addCase(signUp.rejected, state => {
+        state.loginError = true;
+      })
+      .addCase(logOut.fulfilled, state => {
+        state.user.name = null;
+        state.user.email = null;
+        state.token = null;
+        state.isLoggedIn = false;
+      })
+      .addCase(refreshUser.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshUser.fulfilled, (state, { payload }) => {
+        state.user.name = payload.name;
+        state.user.email = payload.email;
+        state.token = payload.token;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshUser.rejected, state => {
+        state.isRefreshing = false;
       });
   },
 });

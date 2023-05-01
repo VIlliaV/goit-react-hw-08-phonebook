@@ -6,7 +6,7 @@ import { signUp } from 'redux/auth/authOperations';
 
 const Register = () => {
   const dispatch = useDispatch();
-  // register(data);
+  
   const {
     register,
     handleSubmit,
@@ -14,12 +14,10 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = data => {
-    // console.log(data);
     dispatch(signUp(data));
   };
 
-  // const register = 18888;
-  // const errors = 168;
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
