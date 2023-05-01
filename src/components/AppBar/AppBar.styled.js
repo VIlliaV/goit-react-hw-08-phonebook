@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import phone from '../../images/phone.jpg';
+import leaf from '../../images/leaf.jpg';
 import { NavLink } from 'react-router-dom';
 
 export const Header = styled.header`
@@ -7,7 +7,7 @@ export const Header = styled.header`
 
   justify-content: space-between;
   padding: 10px;
-  background-image: url(${phone});
+  background-image: url(${leaf});
   background-size: cover;
   background-position: center 40%;
 `;

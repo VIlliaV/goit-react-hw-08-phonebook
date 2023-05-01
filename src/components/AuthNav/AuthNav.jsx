@@ -1,10 +1,14 @@
+import { useAuth } from 'Hooks/useAuth';
 import { NavStyle } from 'components/AppBar/AppBar.styled';
 
 export const AuthNav = () => {
+  const { isLogin } = useAuth();
   return (
-    <nav>
-      <NavStyle to="register">register</NavStyle>
-      <NavStyle to="login">login</NavStyle>
-    </nav>
+    !isLogin && (
+      <nav>
+        <NavStyle to="register">register</NavStyle>
+        <NavStyle to="login">login</NavStyle>
+      </nav>
+    )
   );
 };

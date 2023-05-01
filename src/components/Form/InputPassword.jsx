@@ -9,14 +9,24 @@ const InputPassword = ({ props }) => {
   const handleClickShowPassword = () => {
     setShowPassword(show => !show);
   };
+
   return (
     <TextField
       label="Password"
       variant="outlined"
       type={showPassword ? 'text' : 'password'}
-      {...register('password', { required: true })}
+      {...register('password', {
+        required: true,
+        minLength: 7,
+      })}
       error={Boolean(errors.password)}
-      helperText={errors.password && 'Password is required'}
+      helperText={
+        errors.password?.type === 'minLength'
+          ? 'Password must be at least 7 characters long'
+          : errors.password?.type === 'required'
+          ? 'Password is required'
+          : null
+      }
       placeholder={'********'}
       InputProps={{
         endAdornment: (

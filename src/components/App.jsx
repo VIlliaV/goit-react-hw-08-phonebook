@@ -10,6 +10,7 @@ import { useAuth } from 'Hooks/useAuth';
 import { Loader } from './Loader/Loader';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
+import { Profile } from 'pages/Profile/Profile';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const Register = lazy(() => import('pages/Register/Register'));
@@ -55,6 +56,10 @@ export const App = () => {
           <Route
             path="contacts"
             element={<PrivateRoute component={<Phonebook />} redirectTo="/" />}
+          />
+          <Route
+            path="profile"
+            element={<PrivateRoute component={<Profile />} redirectTo="/" />}
           />
         </Route>
       </Routes>

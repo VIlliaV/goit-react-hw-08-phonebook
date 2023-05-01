@@ -6,7 +6,7 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
   height: '95vh',
   [theme.breakpoints.down('sm')]: {
     width: '100% !important', // Overrides inline-style
-    height: '48vh',
+    height: '46vh',
   },
   '&:hover, &.Mui-focusVisible': {
     zIndex: 1,
