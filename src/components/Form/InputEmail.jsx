@@ -1,4 +1,5 @@
 import { TextField } from '@mui/material';
+import { textFieldStyle } from './Input.styled';
 
 const InputEmail = ({ props }) => {
   const { register, errors } = props;
@@ -6,7 +7,7 @@ const InputEmail = ({ props }) => {
   return (
     <TextField
       sx={{
-        backgroundColor: `white`,
+        ...textFieldStyle,
       }}
       label="Email"
       variant="outlined"
@@ -17,6 +18,7 @@ const InputEmail = ({ props }) => {
       error={Boolean(errors.email)}
       helperText={errors.email && 'Enter a valid email address'}
       placeholder={'email@example.com'}
+      InputProps={{}}
     />
   );
 };

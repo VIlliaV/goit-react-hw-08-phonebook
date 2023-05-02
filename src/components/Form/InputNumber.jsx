@@ -1,10 +1,13 @@
 import { TextField } from '@mui/material';
-
+import { textFieldStyle } from './Input.styled';
 const InputNumber = ({ props }) => {
   const { register, errors } = props;
 
   return (
     <TextField
+      sx={{
+        ...textFieldStyle,
+      }}
       label="Number"
       variant="outlined"
       {...register('number', { required: true })}

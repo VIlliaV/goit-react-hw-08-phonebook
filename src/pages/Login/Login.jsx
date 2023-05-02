@@ -7,6 +7,9 @@ import { login } from 'redux/auth/authOperations';
 import { useDispatch } from 'react-redux';
 import { forwardRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import leaf from '../../images/leaf.jpg';
+import { Form } from './Login.styled';
+import ModalAuth from 'components/Modal/ModalAuth';
 import wood from '../../images/wood.jpg';
 
 const Login = () => {
@@ -27,30 +30,27 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <StyledModal
-        aria-labelledby="unstyled-modal-title"
-        aria-describedby="unstyled-modal-description"
-        open="true"
-        onClose={handleClose}
-        slots={{ backdrop: StyledBackdrop }}
-        sx={{
-          backgroundImage: `url(${wood})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 50%',
-        }}
-      >
-        <Box sx={style}>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <InputEmail props={{ register, errors }} />
-            <InputPassword props={{ register, errors }} />
-            <Button type="submit" variant="contained">
-              Login
-            </Button>
-          </form>
-        </Box>
-      </StyledModal>
-    </div>
+    <ModalAuth>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <InputEmail props={{ register, errors }} />
+        <InputPassword props={{ register, errors }} />
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{
+            backgroundImage: `url(${wood})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 10%',
+            border: '2px solid rgb(87, 100, 90)',
+            '&:hover ': {
+              borderColor: 'rgba(170, 249, 190, 0.742)',
+            },
+          }}
+        >
+          Login
+        </Button>
+      </Form>
+    </ModalAuth>
   );
 };
 
@@ -90,7 +90,7 @@ const style = theme => ({
   width: 400,
   bgcolor: theme.palette.mode === 'dark' ? '#0A1929' : 'white',
   border: '2px solid black',
-  padding: '16px 32px 24px 32px',
+  padding: '36px 32px 36px 32px',
 });
 
 export default Login;

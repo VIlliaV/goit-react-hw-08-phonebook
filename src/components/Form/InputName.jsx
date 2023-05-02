@@ -1,12 +1,12 @@
 import { TextField } from '@mui/material';
-
+import { textFieldStyle } from './Input.styled';
 const InputName = ({ props }) => {
   const { register, errors } = props;
 
   return (
     <TextField
       sx={{
-        backgroundColor: `white`,
+        ...textFieldStyle,
       }}
       label="Name"
       variant="outlined"

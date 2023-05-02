@@ -1,7 +1,7 @@
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { IconButton, InputAdornment, TextField } from '@mui/material';
 import { useState } from 'react';
-
+import { textFieldStyle } from './Input.styled';
 const InputPassword = ({ props }) => {
   const { register, errors } = props;
 
@@ -13,8 +13,7 @@ const InputPassword = ({ props }) => {
   return (
     <TextField
       sx={{
-        backgroundColor: 'rgba(250, 246, 246, 0.7)',
-        // backgroundColor: `white`,
+        ...textFieldStyle,
       }}
       label="Password"
       variant="outlined"
@@ -39,6 +38,9 @@ const InputPassword = ({ props }) => {
               aria-label="toggle password visibility"
               onClick={handleClickShowPassword}
               edge="end"
+              sx={{
+                color: 'rgb(87, 100, 90)',
+              }}
             >
               {showPassword ? <VisibilityOff /> : <Visibility />}
             </IconButton>
