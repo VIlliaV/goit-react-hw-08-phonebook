@@ -5,6 +5,9 @@ const InputName = ({ props }) => {
 
   return (
     <TextField
+      sx={{
+        backgroundColor: `white`,
+      }}
       label="Name"
       variant="outlined"
       {...register('name', { required: true })}

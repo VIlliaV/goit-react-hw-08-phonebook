@@ -12,6 +12,10 @@ const InputPassword = ({ props }) => {
 
   return (
     <TextField
+      sx={{
+        backgroundColor: 'rgba(250, 246, 246, 0.7)',
+        // backgroundColor: `white`,
+      }}
       label="Password"
       variant="outlined"
       type={showPassword ? 'text' : 'password'}

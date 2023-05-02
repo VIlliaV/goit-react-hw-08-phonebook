@@ -5,6 +5,9 @@ const InputEmail = ({ props }) => {
 
   return (
     <TextField
+      sx={{
+        backgroundColor: `white`,
+      }}
       label="Email"
       variant="outlined"
       {...register('email', {
