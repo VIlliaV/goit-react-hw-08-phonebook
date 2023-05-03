@@ -1,38 +1,66 @@
 import PropTypes from 'prop-types';
 
-import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { deleteContact } from 'redux/contacts/contactsOperations';
 
-import { Item } from './ContactItem.styled';
+// import { Item } from './ContactItem.styled';
+
+import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemText from '@mui/material/ListItemText';
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import FolderIcon from '@mui/icons-material/Folder';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Typography } from '@mui/material';
 
 export const ContactItem = ({ contact }) => {
-  const del = useRef();
-
   const dispatch = useDispatch();
 
   const deleteItem = id => {
-    del.current.className += ' delete';
-    console.log('knopka');
     dispatch(deleteContact(id));
   };
 
   const { id, name, number } = contact;
 
   return (
-    <Item ref={del}>
-      <span className="circle"></span>
-      <p className="name">{name}:</p>
-      <p> {number}</p>
-      <button
-        onClick={() => {
-          deleteItem(id);
-        }}
-      >
-        Delete
-      </button>
-    </Item>
+    <ListItem
+      sx={{
+        marginBottom: '10px',
+        padding: '2px',
+        borderColor: 'rgb(87, 100, 90)',
+        boxShadow: '2px 2px 4px rgba(170, 249, 190, 0.742)',
+        '&:hover ': {
+          // borderColor: 'rgba(170, 249, 190, 0.742)',
+          boxShadow: '3px 3px 6px rgba(170, 249, 190, 0.742)',
+        },
+      }}
+      secondaryAction={
+        <IconButton
+          edge="end"
+          aria-label="delete"
+          onClick={() => {
+            console.log('id :>> ', id);
+            deleteItem(id);
+          }}
+        >
+          <DeleteIcon sx={{ color: 'green' }} />
+        </IconButton>
+      }
+    >
+      <ListItemAvatar>
+        <Avatar sx={{ bgcolor: 'green' }}>{name.slice(0, 2)}</Avatar>
+      </ListItemAvatar>
+      <ListItemText
+        primary={name}
+        secondary={
+          <Typography variant="body1" color="white">
+            {number}
+          </Typography>
+        }
+      />
+    </ListItem>
   );
 };
 

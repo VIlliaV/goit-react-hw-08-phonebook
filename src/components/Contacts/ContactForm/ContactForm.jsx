@@ -18,6 +18,7 @@ export const ContactForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -31,6 +32,7 @@ export const ContactForm = () => {
         name,
         number,
       };
+      reset();
       dispatch(addContact(newUser));
     }
   };

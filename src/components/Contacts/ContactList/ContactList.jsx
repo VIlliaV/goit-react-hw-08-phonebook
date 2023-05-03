@@ -12,6 +12,14 @@ import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { Loader } from 'components/Loader/Loader';
 import { ContactItem } from '..';
 
+//!  test
+
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+
 export const ContactList = () => {
   const error = useSelector(selectError);
   const loading = useSelector(selectIsLoading);
@@ -32,11 +40,21 @@ export const ContactList = () => {
   return (
     <>
       {filterContacts.length !== 0 ? (
-        <ul>
-          {filterContacts.map(({ id, name, number }) => (
-            <ContactItem key={id} contact={{ id, name, number }} />
-          ))}
-        </ul>
+        <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={6}>
+              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+                CONTACTS
+              </Typography>
+
+              <List>
+                {filterContacts.map(({ id, name, number }) => (
+                  <ContactItem key={id} contact={{ id, name, number }} />
+                ))}
+              </List>
+            </Grid>
+          </Grid>
+        </Box>
       ) : (
         <p>Please add contact</p>
       )}

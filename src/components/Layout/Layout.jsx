@@ -8,7 +8,8 @@ export const Layout = () => {
     <div
       style={{
         // marginTop: '65px',
-        height: '100vh',
+        minHeight: '100vh',
+        height: '100%',
         backgroundImage: `url(${leaf})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center 50%',

@@ -8,9 +8,12 @@ const InputNumber = ({ props }) => {
       sx={{
         ...textFieldStyle,
       }}
-      label="Number"
+      label="phone number"
       variant="outlined"
-      {...register('number', { required: true })}
+      {...register('number', {
+        required: true,
+        pattern: /^[0-9\b]+$/,
+      })}
       error={Boolean(errors.number)}
       helperText={errors.number && 'Number is required'}
       placeholder={'0678833883'}
