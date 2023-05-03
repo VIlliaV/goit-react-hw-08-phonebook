@@ -4,12 +4,12 @@ import toast from 'react-hot-toast';
 import { addContact } from 'redux/contacts/contactsOperations';
 import { selectContacts } from 'redux/contacts/contactsSelectors';
 
-import { Form } from './ContactForm.styled';
-
 import { useForm } from 'react-hook-form';
 
-import { Button } from '@mui/material';
 import { InputName, InputNumber } from 'components/Form';
+import ModalAuth from 'components/Modal/ModalAuth';
+import { ButtonType } from 'components/Form/ButtonType';
+import { Form } from 'components/Form/Form.styled';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -36,12 +36,12 @@ export const ContactForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(addNewUser)}>
-      <InputName props={{ register, errors }} />
-      <InputNumber props={{ register, errors }} />
-      <Button type="submit" variant="contained">
-        add contact
-      </Button>
-    </Form>
+    <ModalAuth isOpen={false} nameOpenButtonModal="NEW CONTACT">
+      <Form onSubmit={handleSubmit(addNewUser)}>
+        <InputName props={{ register, errors }} />
+        <InputNumber props={{ register, errors }} />
+        <ButtonType type="submit">ADD CONTACT</ButtonType>
+      </Form>
+    </ModalAuth>
   );
 };

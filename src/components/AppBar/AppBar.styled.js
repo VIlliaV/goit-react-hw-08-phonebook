@@ -14,8 +14,19 @@ export const Header = styled.header`
 
 export const NavStyle = styled(NavLink)`
   color: white;
-  margin-left: 10px;
+  padding: 10px 15px;
+  margin-left: 20px;
+  &:hover {
+    border: 1px solid rgba(170, 249, 190, 0.742);
+    border-radius: 5px;
+
+    box-shadow: 2px 2px 4px rgba(170, 249, 190, 0.742);
+  }
   &.active {
-    color: red;
+    color: rgba(170, 249, 190, 0.742);
+    border: 1px solid rgba(170, 249, 190, 0.742);
+    border-radius: 5px;
+
+    box-shadow: 2px 2px 4px rgba(170, 249, 190, 0.742);
   }
 `;

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const Form = styled.form`
-  width: 200px;
+  /* width: 200px;
   padding: 7px;
   margin-bottom: 25px;
   font-size: 18px;
   border: 1px solid black;
   border-radius: 8px;
-  box-shadow: 5px 5px 10px rgb(101, 101, 101, 0.5);
+  box-shadow: 5px 5px 10px rgb(101, 101, 101, 0.5); */
   /* & p {
     font-weight: 500;
     margin-bottom: 5px;

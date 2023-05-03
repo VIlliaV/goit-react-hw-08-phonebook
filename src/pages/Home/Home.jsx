@@ -43,7 +43,7 @@ const Home = () => {
           key={image.title}
           style={{
             width: image.width,
-            border: '2px solid white',
+            border: '2px solid  rgb(87, 100, 90)',
           }}
           onClick={() => {
             navigate(image.route, { replace: true });
@@ -57,6 +57,10 @@ const Home = () => {
               variant="subtitle1"
               color="inherit"
               sx={{
+                fontSize: '28px',
+                letterSpacing: '.3rem',
+                textShadow: '4px 4px 8px rgba(170, 249, 190, 0.742)',
+                color: ' rgba(255, 255, 255)',
                 position: 'relative',
                 p: 4,
                 pt: 2,

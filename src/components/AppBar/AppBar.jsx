@@ -55,11 +55,14 @@ const ResponsiveAppBar = () => {
 
   return (
     <AppBar
-      position="fixed"
+      position="sticky"
       sx={{
+        fontSize: '20px',
         backgroundImage: `url(${leaf})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center 40%',
+        borderBottom: '3px solid rgb(87, 100, 90)',
+        boxShadow: '6px 6px 12px rgba(170, 249, 190, 0.742)',
       }}
     >
       <Container maxWidth="xl">
