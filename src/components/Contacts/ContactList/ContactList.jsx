@@ -42,7 +42,7 @@ export const ContactList = () => {
       {filterContacts.length !== 0 ? (
         <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
           <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={12}>
               <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
                 CONTACTS
               </Typography>
@@ -50,11 +50,12 @@ export const ContactList = () => {
               <List
                 sx={{
                   width: '100%',
-                  maxWidth: 360,
+                  // height: '70%',
+                  maxWidth: 750,
                   // bgcolor: 'background.paper',
                   position: 'relative',
                   overflow: 'auto',
-                  maxHeight: 300,
+                  maxHeight: '80vh',
                   '& ul': { padding: 0 },
                 }}
               >

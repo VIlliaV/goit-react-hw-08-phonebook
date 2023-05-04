@@ -57,6 +57,7 @@ const ResponsiveAppBar = () => {
     <AppBar
       position="sticky"
       sx={{
+        display: { xs: 'flex', md: 'none' },
         fontSize: '20px',
         backgroundImage: `url(${leaf})`,
         backgroundSize: 'cover',
