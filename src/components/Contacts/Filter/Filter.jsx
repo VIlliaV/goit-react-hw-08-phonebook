@@ -7,8 +7,6 @@ import { InputName } from 'components/Form';
 export const Filter = () => {
   const dispatch = useDispatch();
   const handleFilter = ({ target: { value } }) => {
-    console.log('🚀 ~ value:', value);
-
     dispatch(setFilter(value));
   };
 

@@ -42,7 +42,7 @@ export const ContactList = () => {
       {filterContacts.length !== 0 ? (
         <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
           <Grid container spacing={2}>
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={10}>
               <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
                 CONTACTS: {filterContacts.length} pcs
               </Typography>

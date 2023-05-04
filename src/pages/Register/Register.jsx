@@ -7,18 +7,30 @@ import { signUp } from 'redux/auth/authOperations';
 import ModalAuth from 'components/Modal/ModalAuth';
 import { ButtonType } from 'components/Form/ButtonType';
 import { Form } from 'components/Form/Form.styled';
+import { useAuth } from 'Hooks/useAuth';
+import { toast } from 'react-hot-toast';
+import { useEffect, useRef } from 'react';
 
 const Register = () => {
   const dispatch = useDispatch();
-
+  const isNoError = useRef(true);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { loginError } = useAuth();
+  useEffect(() => {
+    if (isNoError.current) return;
+    if (loginError) {
+      toast.error('something went wrong try again');
+      isNoError.current = true;
+    }
+  });
 
   const onSubmit = data => {
     dispatch(signUp(data));
+    isNoError.current = false;
   };
 
   return (

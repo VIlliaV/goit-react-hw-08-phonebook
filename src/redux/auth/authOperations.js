@@ -57,7 +57,7 @@ export const refreshUser = createAsyncThunk(
     const {
       auth: { token },
     } = getState();
-    console.log('🚀 ~ token:', token);
+
     if (token === null) return rejectWithValue('the user is not logged in');
     try {
       setAuthHeader(token);
