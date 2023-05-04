@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   /* justify-content: center; */
-  /* margin-top: 16px; */
+  /* margin-top: 132px; */
   /* padding: 16px; */
   & .left_side {
     display: flex;
@@ -13,5 +13,6 @@ export const Container = styled.div`
     width: 50%;
     padding: 32px;
     /* margin-right: 32px; */
+    margin-top: 52px;
   }
 `;

@@ -44,7 +44,7 @@ export const ContactList = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} md={12}>
               <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                CONTACTS
+                CONTACTS: {filterContacts.length} pcs
               </Typography>
 
               <List
@@ -68,7 +68,12 @@ export const ContactList = () => {
           </Grid>
         </Box>
       ) : (
-        <p>Please add contact</p>
+        <Typography
+          sx={{ color: 'rgba(170, 249, 190, 0.742)', marginTop: '72px' }}
+          variant="h4"
+        >
+          Please add contact
+        </Typography>
       )}
     </>
   );

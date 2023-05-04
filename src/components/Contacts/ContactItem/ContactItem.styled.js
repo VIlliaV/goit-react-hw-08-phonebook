@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Item = styled.li`
-  display: flex;
+  /* display: flex;
   position: relative;
   align-items: baseline;
   margin-bottom: 5px;
@@ -23,7 +23,7 @@ export const Item = styled.li`
     border: 1px solid black;
     border-radius: 5px;
     /* background-color: white; */
-  }
+  /* }
   &.delete {
     opacity: 0;
     transform: translateX(-100%);
@@ -51,5 +51,5 @@ export const Item = styled.li`
     &:hover {
       background-color: rgb(101, 101, 101, 0.5);
     }
-  }
+  } */
 `;

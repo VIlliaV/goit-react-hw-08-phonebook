@@ -8,10 +8,11 @@ import Menu from '@mui/material/Menu';
 
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+// import AdbIcon from '@mui/icons-material/Adb';
 import { useState } from 'react';
 import { Navigation } from 'components/Navigation/Navigation';
 import { AuthNav } from 'components/AuthNav/AuthNav';
@@ -57,7 +58,7 @@ const ResponsiveAppBar = () => {
     <AppBar
       position="sticky"
       sx={{
-        display: { xs: 'flex', md: 'none' },
+        // display: { xs: 'flex', md: 'none' },
         fontSize: '20px',
         backgroundImage: `url(${leaf})`,
         backgroundSize: 'cover',
@@ -71,9 +72,12 @@ const ResponsiveAppBar = () => {
           sx={{
             display: { xs: 'flex', md: 'none' },
             justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <ContactPhoneIcon
+            sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+          />
           <Typography
             variant="h5"
             noWrap
@@ -96,11 +100,16 @@ const ResponsiveAppBar = () => {
         </Container>
         <Toolbar
           disableGutters
-          sx={{ justifyContent: 'space-between', gap: '8px' }}
+          sx={{
+            justifyContent: 'space-between',
+            gap: '8px',
+          }}
         >
           <Navigation />
-          <div style={{ display: 'flex' }}>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <ContactPhoneIcon
+              sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
+            />
             <Typography
               variant="h6"
               noWrap
@@ -125,7 +134,13 @@ const ResponsiveAppBar = () => {
           <AuthNav />
 
           {isLogin && (
-            <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
+            <Box
+              sx={{
+                flexGrow: 0,
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
               <Typography sx={{ mr: 2 }}>
                 {matches ? `wellcome, ${name}       ` : ''}
               </Typography>
@@ -138,7 +153,10 @@ const ResponsiveAppBar = () => {
                 </IconButton>
               </Tooltip>
               <Menu
-                sx={{ mt: '45px' }}
+                sx={{
+                  mt: '45px',
+                  backgroundColor: 'rgba(179, 19, 19, 0.742), ',
+                }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
