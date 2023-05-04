@@ -47,7 +47,18 @@ export const ContactList = () => {
                 CONTACTS
               </Typography>
 
-              <List>
+              <List
+                sx={{
+                  width: '100%',
+                  maxWidth: 360,
+                  // bgcolor: 'background.paper',
+                  position: 'relative',
+                  overflow: 'auto',
+                  maxHeight: 300,
+                  '& ul': { padding: 0 },
+                }}
+              >
+                {loading && <Loader />}
                 {filterContacts.map(({ id, name, number }) => (
                   <ContactItem key={id} contact={{ id, name, number }} />
                 ))}
@@ -58,7 +69,6 @@ export const ContactList = () => {
       ) : (
         <p>Please add contact</p>
       )}
-      {loading && <Loader />}
     </>
   );
 };

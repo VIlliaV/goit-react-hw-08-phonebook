@@ -1,13 +1,17 @@
 import { ContactForm, ContactList, Filter } from 'components/Contacts';
+import { Container } from './Phonebook.styled';
 
 const Phonebook = () => {
   return (
-    <div>
-      <ContactForm />
+    <Container>
+      <div className="left_side">
+        <ContactForm />
 
-      <Filter />
+        <Filter />
+      </div>
+
       <ContactList />
-    </div>
+    </Container>
   );
 };
 

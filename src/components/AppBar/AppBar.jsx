@@ -131,7 +131,9 @@ const ResponsiveAppBar = () => {
 
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar sx={{ bgcolor: 'green' }}>{name.slice(0, 2)}</Avatar>
+                  <Avatar sx={{ bgcolor: 'rgb(87, 100, 90)' }}>
+                    {name.slice(0, 2)}
+                  </Avatar>
                 </IconButton>
               </Tooltip>
               <Menu

@@ -27,12 +27,13 @@ export const ContactItem = ({ contact }) => {
   return (
     <ListItem
       sx={{
+        border: '1px solid rgb(87, 100, 90)',
         marginBottom: '10px',
         padding: '2px',
         borderColor: 'rgb(87, 100, 90)',
         boxShadow: '2px 2px 4px rgba(170, 249, 190, 0.742)',
         '&:hover ': {
-          // borderColor: 'rgba(170, 249, 190, 0.742)',
+          borderColor: 'rgba(170, 249, 190, 0.742)',
           boxShadow: '3px 3px 6px rgba(170, 249, 190, 0.742)',
         },
       }}
@@ -45,12 +46,14 @@ export const ContactItem = ({ contact }) => {
             deleteItem(id);
           }}
         >
-          <DeleteIcon sx={{ color: 'green' }} />
+          <DeleteIcon sx={{ color: 'rgb(87, 100, 90)' }} />
         </IconButton>
       }
     >
       <ListItemAvatar>
-        <Avatar sx={{ bgcolor: 'green' }}>{name.slice(0, 2)}</Avatar>
+        <Avatar sx={{ bgcolor: 'rgb(87, 100, 90) ' }}>
+          {name.slice(0, 2)}
+        </Avatar>
       </ListItemAvatar>
       <ListItemText
         primary={name}

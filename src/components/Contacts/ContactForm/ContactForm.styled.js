@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Form = styled.form`
+export const Container = styled.div`
+  /* display: flex;
+  justify-content: center;
+  margin-top: 16px; */
+
   /* width: 200px;
   padding: 7px;
   margin-bottom: 25px;
