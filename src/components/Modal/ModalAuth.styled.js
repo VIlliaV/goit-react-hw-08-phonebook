@@ -1,9 +1,7 @@
+import { forwardRef } from 'react';
+
 import { styled as styledMui } from '@mui/system';
 import Modal from '@mui/base/Modal';
-import { forwardRef } from 'react';
-import styled from 'styled-components';
-
-const Container = styled.div``;
 
 const Backdrop = forwardRef(function Backdrop(props, ref) {
   const { className, ...other } = props;
@@ -46,4 +44,4 @@ const style = theme => ({
   padding: '16px 32px 24px 32px',
 });
 
-export { style, StyledBackdrop, StyledModal, Container };
+export { style, StyledBackdrop, StyledModal };

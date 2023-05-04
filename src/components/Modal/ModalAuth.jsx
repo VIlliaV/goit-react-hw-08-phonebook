@@ -1,14 +1,9 @@
 import { Box } from '@mui/system';
 
 import { useNavigate } from 'react-router-dom';
-import {
-  Container,
-  StyledBackdrop,
-  StyledModal,
-  style,
-} from './ModalAuth.styled';
+import { StyledBackdrop, StyledModal, style } from './ModalAuth.styled';
 import { useEffect, useState } from 'react';
-import { ButtonType } from 'components/Form/ButtonType';
+import { ButtonType } from 'components/Form';
 
 const ModalAuth = ({ isOpen, nameOpenButtonModal, children }) => {
   const navigate = useNavigate();
@@ -25,7 +20,7 @@ const ModalAuth = ({ isOpen, nameOpenButtonModal, children }) => {
   };
 
   return (
-    <Container>
+    <div>
       {!isOpen && (
         <ButtonType type="button" onClick={handleOpen}>
           {nameOpenButtonModal}
@@ -40,7 +35,7 @@ const ModalAuth = ({ isOpen, nameOpenButtonModal, children }) => {
       >
         <Box sx={style}>{children}</Box>
       </StyledModal>
-    </Container>
+    </div>
   );
 };
 

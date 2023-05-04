@@ -1,7 +1,6 @@
 export const textFieldStyle = {
   boxShadow: '2px 2px 4px rgba(170, 249, 190, 0.742)',
   '&:hover ': {
-    // borderColor: 'rgba(170, 249, 190, 0.742)',
     boxShadow: '3px 3px 6px rgba(170, 249, 190, 0.742)',
   },
   '& .MuiOutlinedInput-root': {
@@ -24,4 +23,3 @@ export const textFieldStyle = {
     color: 'rgb(87, 100, 90)',
   },
 };
-// MuiButton-root;

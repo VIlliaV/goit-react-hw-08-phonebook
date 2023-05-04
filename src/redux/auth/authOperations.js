@@ -16,7 +16,6 @@ export const login = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('users/login', user);
-      console.log('🚀 ~ data:', data);
 
       setAuthHeader(data.token);
       return data;
@@ -62,7 +61,7 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthHeader(token);
       const { data } = await axios.get('users/current');
-      console.log('🚀 ~ data:', data);
+
       return data;
     } catch (error) {
       return rejectWithValue(`Can't login ${error.message}`);

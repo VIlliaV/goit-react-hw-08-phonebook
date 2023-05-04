@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import wood from '../../images/wood.jpg';
 
-export const ButtonType = ({ onClick, type, children }) => {
+const ButtonType = ({ onClick, type, children }) => {
   return (
     <Button
       onClick={onClick}
@@ -27,3 +27,5 @@ export const ButtonType = ({ onClick, type, children }) => {
     </Button>
   );
 };
+
+export default ButtonType;

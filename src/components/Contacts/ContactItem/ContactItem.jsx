@@ -4,16 +4,15 @@ import { useDispatch } from 'react-redux';
 
 import { deleteContact } from 'redux/contacts/contactsOperations';
 
-// import { Item } from './ContactItem.styled';
-
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
-
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Typography } from '@mui/material';
+
+import { styledListItem } from './ContactItem.styled';
 
 export const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
@@ -27,22 +26,13 @@ export const ContactItem = ({ contact }) => {
   return (
     <ListItem
       sx={{
-        border: '1px solid rgb(87, 100, 90)',
-        marginBottom: '10px',
-        padding: '2px',
-        borderColor: 'rgb(87, 100, 90)',
-        boxShadow: '2px 2px 4px rgba(170, 249, 190, 0.742)',
-        '&:hover ': {
-          borderColor: 'rgba(170, 249, 190, 0.742)',
-          boxShadow: '3px 3px 6px rgba(170, 249, 190, 0.742)',
-        },
+        ...styledListItem,
       }}
       secondaryAction={
         <IconButton
           edge="end"
           aria-label="delete"
           onClick={() => {
-            console.log('id :>> ', id);
             deleteItem(id);
           }}
         >

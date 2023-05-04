@@ -1,12 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { login, signUp, logOut, refreshUser } from './authOperations';
 
-// const defaultStatus = {
-//   pending: 'pending',
-//   fulfilled: 'fulfilled',
-//   rejected: 'rejected',
-// };
-
 const authInitialState = {
   user: {
     name: null,

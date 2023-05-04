@@ -1,27 +1,34 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { logOut } from 'redux/auth/authOperations';
+import { useDispatch } from 'react-redux';
+
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
-
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-// import AdbIcon from '@mui/icons-material/Adb';
-import { useState } from 'react';
+import { useMediaQuery } from '@mui/material';
+
 import { Navigation } from 'components/Navigation/Navigation';
 import { AuthNav } from 'components/AuthNav/AuthNav';
-import leaf from '../../images/leaf.jpg';
-import { useNavigate } from 'react-router-dom';
-import { logOut } from 'redux/auth/authOperations';
-import { useDispatch } from 'react-redux';
 import { useAuth } from 'Hooks/useAuth';
-import { useMediaQuery } from '@mui/material';
+import {
+  StyledAppBar,
+  containerStyled,
+  styledBox,
+  styledContactPhoneIcon,
+  styledMenu,
+  toolBarStyled,
+  typographyStyledDesk,
+  typographyStyledMob,
+} from './AppBar.styled';
 
 const settings = [
   { title: 'Profile', nav: 'profile' },
@@ -31,13 +38,13 @@ const settings = [
 const ResponsiveAppBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [anchorElUser, setAnchorElUser] = useState(null);
+
   const matches = useMediaQuery('(min-width:380px)');
   const {
     isLogin,
     user: { name },
   } = useAuth();
-
-  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenUserMenu = event => {
     setAnchorElUser(event.currentTarget);
@@ -55,26 +62,9 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar
-      position="sticky"
-      sx={{
-        // display: { xs: 'flex', md: 'none' },
-        fontSize: '20px',
-        backgroundImage: `url(${leaf})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center 40%',
-        borderBottom: '3px solid rgb(87, 100, 90)',
-        boxShadow: '6px 6px 12px rgba(170, 249, 190, 0.742)',
-      }}
-    >
+    <StyledAppBar>
       <Container maxWidth="xl">
-        <Container
-          sx={{
-            display: { xs: 'flex', md: 'none' },
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
+        <Container sx={{ ...containerStyled }}>
           <ContactPhoneIcon
             sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
           />
@@ -83,68 +73,33 @@ const ResponsiveAppBar = () => {
             noWrap
             component="a"
             onClick={() => navigate('/')}
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 0,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-              cursor: 'pointer',
-            }}
+            sx={{ ...typographyStyledMob }}
           >
             PHONEBOOK
           </Typography>
         </Container>
-        <Toolbar
-          disableGutters
-          sx={{
-            justifyContent: 'space-between',
-            gap: '8px',
-          }}
-        >
+        <Toolbar disableGutters sx={{ ...toolBarStyled }}>
           <Navigation />
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <ContactPhoneIcon
-              sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
-            />
+          <div className="logo">
+            <ContactPhoneIcon sx={{ ...styledContactPhoneIcon }} />
             <Typography
               variant="h6"
               noWrap
               component="a"
               onClick={() => navigate('/')}
               sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                flexGrow: 0,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-                cursor: 'pointer',
+                ...typographyStyledDesk,
               }}
             >
               PHONEBOOK
             </Typography>
           </div>
-
           <AuthNav />
-
           {isLogin && (
-            <Box
-              sx={{
-                flexGrow: 0,
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
+            <Box sx={{ ...styledBox }}>
               <Typography sx={{ mr: 2 }}>
                 {matches ? `wellcome, ${name}       ` : ''}
               </Typography>
-
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar sx={{ bgcolor: 'rgb(87, 100, 90)' }}>
@@ -153,10 +108,7 @@ const ResponsiveAppBar = () => {
                 </IconButton>
               </Tooltip>
               <Menu
-                sx={{
-                  mt: '45px',
-                  backgroundColor: 'rgba(179, 19, 19, 0.742), ',
-                }}
+                sx={{ ...styledMenu }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
@@ -184,7 +136,7 @@ const ResponsiveAppBar = () => {
           )}
         </Toolbar>
       </Container>
-    </AppBar>
+    </StyledAppBar>
   );
 };
 export default ResponsiveAppBar;

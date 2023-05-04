@@ -6,10 +6,8 @@ const Phonebook = () => {
     <Container>
       <div className="left_side">
         <ContactForm />
-
         <Filter />
       </div>
-
       <ContactList />
     </Container>
   );

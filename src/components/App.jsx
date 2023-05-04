@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-// import { Container } from './App.styled';
 
 import { Layout } from './Layout/Layout';
 import { lazy, useEffect } from 'react';
@@ -11,7 +10,6 @@ import { Loader } from './Loader/Loader';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { Profile } from 'pages/Profile/Profile';
-// import { selectLoginError } from 'redux/auth/authSelectors';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const Register = lazy(() => import('pages/Register/Register'));

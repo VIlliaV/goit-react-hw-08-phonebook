@@ -1,13 +1,11 @@
 import { useForm } from 'react-hook-form';
 
-import { InputEmail, InputPassword } from 'components/Form';
+import { ButtonType, Form, InputEmail, InputPassword } from 'components/Form';
 import { login } from 'redux/auth/authOperations';
 import { useDispatch } from 'react-redux';
 
 import ModalAuth from 'components/Modal/ModalAuth';
 
-import { ButtonType } from 'components/Form/ButtonType';
-import { Form } from 'components/Form/Form.styled';
 import { useEffect, useRef } from 'react';
 import { toast } from 'react-hot-toast';
 import { useAuth } from 'Hooks/useAuth';

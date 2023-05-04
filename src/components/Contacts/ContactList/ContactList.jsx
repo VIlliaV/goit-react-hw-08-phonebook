@@ -9,16 +9,14 @@ import {
 } from 'redux/contacts/contactsSelectors';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 
-import { Loader } from 'components/Loader/Loader';
-import { ContactItem } from '..';
-
-//!  test
-
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
-
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+
+import { Loader } from 'components/Loader/Loader';
+import { ContactItem } from '..';
+import { styledList, typographyStyled } from './ContactList.styled';
 
 export const ContactList = () => {
   const error = useSelector(selectError);
@@ -47,18 +45,7 @@ export const ContactList = () => {
                 CONTACTS: {filterContacts.length} pcs
               </Typography>
 
-              <List
-                sx={{
-                  width: '100%',
-                  // height: '70%',
-                  maxWidth: 750,
-                  // bgcolor: 'background.paper',
-                  position: 'relative',
-                  overflow: 'auto',
-                  maxHeight: '80vh',
-                  '& ul': { padding: 0 },
-                }}
-              >
+              <List sx={{ ...styledList }}>
                 {loading && <Loader />}
                 {filterContacts.map(({ id, name, number }) => (
                   <ContactItem key={id} contact={{ id, name, number }} />
@@ -68,10 +55,7 @@ export const ContactList = () => {
           </Grid>
         </Box>
       ) : (
-        <Typography
-          sx={{ color: 'rgba(170, 249, 190, 0.742)', marginTop: '72px' }}
-          variant="h4"
-        >
+        <Typography sx={{ ...typographyStyled }} variant="h4">
           Please add contact
         </Typography>
       )}

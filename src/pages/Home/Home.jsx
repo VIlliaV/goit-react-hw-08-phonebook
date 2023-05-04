@@ -1,4 +1,3 @@
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import wood from '../../images/wood.jpg';
 import {
@@ -7,6 +6,8 @@ import {
   ImageButton,
   ImageMarked,
   ImageSrc,
+  StyledBox,
+  styledTypografy,
 } from './Home.styled';
 import { useNavigate } from 'react-router-dom';
 
@@ -29,14 +30,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        minWidth: 300,
-        width: '100%',
-      }}
-    >
+    <StyledBox>
       {images.map(image => (
         <ImageButton
           focusRipple
@@ -56,16 +50,7 @@ const Home = () => {
               component="span"
               variant="subtitle1"
               color="inherit"
-              sx={{
-                fontSize: '28px',
-                letterSpacing: '.3rem',
-                textShadow: '4px 4px 8px rgba(170, 249, 190, 0.742)',
-                color: ' rgba(255, 255, 255)',
-                position: 'relative',
-                p: 4,
-                pt: 2,
-                pb: theme => `calc(${theme.spacing(1)} + 6px)`,
-              }}
+              sx={{ ...styledTypografy }}
             >
               {image.title}
               <ImageMarked className="MuiImageMarked-root" />
@@ -73,7 +58,7 @@ const Home = () => {
           </Image>
         </ImageButton>
       ))}
-    </Box>
+    </StyledBox>
   );
 };
 

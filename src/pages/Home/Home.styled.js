@@ -1,5 +1,13 @@
 import { styled } from '@mui/material/styles';
 import ButtonBase from '@mui/material/ButtonBase';
+import { Box } from '@mui/material';
+
+const StyledBox = styled(Box)({
+  display: 'flex',
+  flexWrap: 'wrap',
+  minWidth: 300,
+  width: '100%',
+});
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
@@ -65,4 +73,23 @@ const ImageMarked = styled('span')(({ theme }) => ({
   transition: theme.transitions.create('opacity'),
 }));
 
-export { ImageButton, ImageSrc, Image, ImageBackdrop, ImageMarked };
+const styledTypografy = {
+  fontSize: '28px',
+  letterSpacing: '.3rem',
+  textShadow: '4px 4px 8px rgba(170, 249, 190, 0.742)',
+  color: ' rgba(255, 255, 255)',
+  position: 'relative',
+  p: 4,
+  pt: 2,
+  pb: theme => `calc(${theme.spacing(1)} + 6px)`,
+};
+
+export {
+  styledTypografy,
+  ImageButton,
+  ImageSrc,
+  Image,
+  ImageBackdrop,
+  ImageMarked,
+  StyledBox,
+};

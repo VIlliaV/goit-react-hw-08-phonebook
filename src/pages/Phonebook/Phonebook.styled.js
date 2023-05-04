@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  /* justify-content: center; */
-  /* margin-top: 132px; */
-  /* padding: 16px; */
+
   & .left_side {
     display: flex;
     flex-direction: column;
@@ -12,7 +10,7 @@ export const Container = styled.div`
     gap: 20px;
     width: 50%;
     padding: 32px;
-    /* margin-right: 32px; */
+
     margin-top: 52px;
   }
 `;
