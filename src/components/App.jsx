@@ -10,7 +10,7 @@ import { Loader } from './Loader/Loader';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { Profile } from 'pages/Profile/Profile';
-
+import { UpdateProfile } from './UpdateProfile';
 const Home = lazy(() => import('pages/Home/Home'));
 const Register = lazy(() => import('pages/Register/Register'));
 const Login = lazy(() => import('pages/Login/Login'));
@@ -60,6 +60,7 @@ export const App = () => {
             path="profile"
             element={<PrivateRoute component={<Profile />} redirectTo="/" />}
           />
+          <Route path="profile/update" element={<UpdateProfile />} />
         </Route>
       </Routes>
     </div>

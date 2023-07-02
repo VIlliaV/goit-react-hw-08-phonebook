@@ -5,6 +5,7 @@ const authInitialState = {
   user: {
     name: null,
     email: null,
+    avatar: null,
   },
   token: null,
   isLoggedIn: false,
