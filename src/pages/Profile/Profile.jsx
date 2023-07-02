@@ -1,20 +1,26 @@
-import { Typography } from '@mui/material';
+import { Avatar, Typography } from '@mui/material';
 import { useAuth } from 'Hooks/useAuth';
-import { StyledContainer } from './Profile.styled';
-import { Link } from 'react-router-dom';
+import { LinkStyle, StyledContainer } from './Profile.styled';
+
+const { REACT_APP_BACKEND_URL } = process.env;
 
 export const Profile = () => {
   const { user } = useAuth();
+
   return (
     <StyledContainer>
-      <Link to="/profile/update">update user</Link>
+      <LinkStyle to="/profile/update">update user</LinkStyle>
       <Typography
         sx={{ color: 'rgba(170, 249, 190, 0.742)', marginTop: '72px' }}
         variant="h2"
       >
         Profile
       </Typography>
-
+      <Avatar
+        alt={user.name}
+        src={`${REACT_APP_BACKEND_URL}/${user.avatar}`}
+        sx={{ width: 150, height: 150 }}
+      />
       <Typography
         sx={{ color: 'rgba(170, 249, 190, 0.742)', marginTop: '36px' }}
         variant="h3"
