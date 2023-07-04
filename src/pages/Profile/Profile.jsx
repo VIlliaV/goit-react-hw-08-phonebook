@@ -7,6 +7,8 @@ const { REACT_APP_BACKEND_URL } = process.env;
 export const Profile = () => {
   const { user } = useAuth();
 
+  const isGravatar = user.avatarURL.slice(0, 2) === '//';
+
   return (
     <StyledContainer>
       <LinkStyle to="/profile/update">update user</LinkStyle>
@@ -18,7 +20,11 @@ export const Profile = () => {
       </Typography>
       <Avatar
         alt={user.name}
-        src={`${REACT_APP_BACKEND_URL}/${user.avatarURL}`}
+        src={
+          isGravatar
+            ? `https:${user.avatarURL}?d=wavatar`
+            : `${REACT_APP_BACKEND_URL}/${user.avatarURL}`
+        }
         sx={{ width: 150, height: 150 }}
       />
       <Typography
