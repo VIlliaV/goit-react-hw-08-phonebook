@@ -1,7 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:8080/';
+const { REACT_APP_BACKEND_URL } = process.env;
+
+axios.defaults.baseURL = REACT_APP_BACKEND_URL;
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -30,6 +32,7 @@ export const signUp = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('users/signup', user);
+
       setAuthHeader(data.token);
       return data;
     } catch (error) {
@@ -71,15 +74,22 @@ export const refreshUser = createAsyncThunk(
 
 export const updateAvatar = createAsyncThunk(
   'user/avatar',
-  async (file, { rejectWithValue }) => {
+  async (file, { rejectWithValue, getState }) => {
+    const {
+      auth: { token },
+    } = getState();
+
+    if (token === null) return rejectWithValue('the user is not logged in');
+
     try {
+      setAuthHeader(token);
       const formData = new FormData();
-      formData.append('avatar', file);
+      formData.append('avatars', file);
       const { data } = await axios.patch('users/avatar', formData, {
         headers: { 'content-type': 'multipart/form-data' },
       });
 
-      return data.avatar;
+      return data.avatarURL;
     } catch (error) {
       return rejectWithValue(error.message);
     }

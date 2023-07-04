@@ -11,7 +11,7 @@ const authInitialState = {
   user: {
     name: null,
     email: null,
-    avatar: null,
+    avatarURL: null,
   },
   token: null,
   isLoggedIn: false,
@@ -70,7 +70,7 @@ const authSlice = createSlice({
         state.loginError = false;
       })
       .addCase(updateAvatar.fulfilled, (state, { payload }) => {
-        state.user.avatar = payload;
+        state.user.avatarURL = payload;
       })
       .addCase(updateAvatar.rejected, state => {
         state.loginError = true;

@@ -18,7 +18,7 @@ export const Profile = () => {
       </Typography>
       <Avatar
         alt={user.name}
-        src={`${REACT_APP_BACKEND_URL}/${user.avatar}`}
+        src={`${REACT_APP_BACKEND_URL}/${user.avatarURL}`}
         sx={{ width: 150, height: 150 }}
       />
       <Typography
