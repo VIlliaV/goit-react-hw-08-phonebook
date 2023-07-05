@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from 'redux/auth/authOperations';
@@ -29,8 +28,8 @@ import {
   typographyStyledDesk,
   typographyStyledMob,
 } from './AppBar.styled';
-
-const { REACT_APP_BACKEND_URL } = process.env;
+import { isGravatar } from 'utils';
+import { useMemo } from 'react';
 
 const settings = [
   { title: 'Profile', nav: 'profile' },
@@ -47,8 +46,7 @@ const ResponsiveAppBar = () => {
     isLogin,
     user: { name, avatarURL },
   } = useAuth();
-
-  const isGravatar = avatarURL?.slice(0, 2) === '//';
+  const avatar = useMemo(() => isGravatar(avatarURL), [avatarURL]);
 
   const handleOpenUserMenu = event => {
     setAnchorElUser(event.currentTarget);
@@ -106,18 +104,7 @@ const ResponsiveAppBar = () => {
               </Typography>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar
-                    alt={name}
-                    src={
-                      isGravatar
-                        ? `https:${avatarURL}?d=wavatar`
-                        : `${REACT_APP_BACKEND_URL}/${avatarURL}`
-                    }
-                    // sx={{ width: 150, height: 150 }}
-                  />
-                  {/* <Avatar sx={{ bgcolor: 'rgb(87, 100, 90)' }}>
-                    {name.slice(0, 2)}
-                  </Avatar> */}
+                  <Avatar alt={name} src={avatar} />
                 </IconButton>
               </Tooltip>
               <Menu

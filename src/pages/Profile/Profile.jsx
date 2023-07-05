@@ -1,13 +1,18 @@
 import { Avatar, Typography } from '@mui/material';
 import { useAuth } from 'Hooks/useAuth';
 import { LinkStyle, StyledContainer } from './Profile.styled';
+import { useMemo } from 'react';
+import { isGravatar } from 'utils';
 
-const { REACT_APP_BACKEND_URL } = process.env;
+// const { REACT_APP_BACKEND_URL } = process.env;
 
 export const Profile = () => {
-  const { user } = useAuth();
+  const {
+    user: { name, email, avatarURL },
+  } = useAuth();
+  const avatar = useMemo(() => isGravatar(avatarURL), [avatarURL]);
 
-  const isGravatar = user.avatarURL.slice(0, 2) === '//';
+  // const isGravatar = avatarURL.slice(0, 2) === '//';
 
   return (
     <StyledContainer>
@@ -18,26 +23,18 @@ export const Profile = () => {
       >
         Profile
       </Typography>
-      <Avatar
-        alt={user.name}
-        src={
-          isGravatar
-            ? `https:${user.avatarURL}?d=wavatar`
-            : `${REACT_APP_BACKEND_URL}/${user.avatarURL}`
-        }
-        sx={{ width: 150, height: 150 }}
-      />
+      <Avatar alt={name} src={avatar} sx={{ width: 150, height: 150 }} />
       <Typography
         sx={{ color: 'rgba(170, 249, 190, 0.742)', marginTop: '36px' }}
         variant="h3"
       >
-        name : {user.name}
+        name : {name}
       </Typography>
       <Typography
         sx={{ color: 'rgba(170, 249, 190, 0.742)', marginTop: '36px' }}
         variant="h3"
       >
-        email : {user.email}
+        email : {email}
       </Typography>
     </StyledContainer>
   );
